@@ -6,17 +6,17 @@ body{
 }
 
 .cellDivClass{
-    width: 5px;
-    height: 5px;
+    width: ;
+    height: ;
     border: 1px solid;
     border-color: rgb(0, 0, 0);
 }
 
 #sketch-grid-container{
-    width: 512px;
-    height: 512px;
+    width: 500px;
+    height: 500px;
     border: solid;
-    border-color: black;
+    border-color: rgb(0, 0, 0);
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
