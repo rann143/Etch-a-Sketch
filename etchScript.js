@@ -1,17 +1,28 @@
+//Query Selecting
 const skContainer = document.querySelector('#sketch-grid-container');
 const cellDiv = document.createElement('div');
-//cellDiv.style.backgroundColor = 'rgb(175,100,100)';
+
+//cellDiv styling
 cellDiv.style.border = '1px solid';
 cellDiv.style.borderColor = 'black';
-//cellDiv.classList.add('cellDivClass');
+cellDiv.classList.add('cellDivClass');
 
-skContWidth = document.getElementById('sketch-grid-container').clientWidth;
-skContHeight = document.getElementById('sketch-grid-container').clientHeight;
+//clear (reset) button functionality
+const btn = document.querySelector('#clear-btn');
+btn.addEventListener('click', () => {
+    let sizeInput;
+    do {
+        sizeInput = prompt("Enter a number between 1 and 100 for grid dimensions i.e. Enter 32 for a 32x32 grid");
+        if (sizeInput <= 100){
+            genGrid(sizeInput);
+        }
+    } while (sizeInput > 100 && sizeInput);
+});
 
-
+//Variables for calculating individual cell size
+let skContWidth = document.getElementById('sketch-grid-container').clientWidth;
+let skContHeight = document.getElementById('sketch-grid-container').clientHeight;
 let totalArea = Number(skContWidth) * Number(skContHeight);
-
-//console.log(totalArea);
 
 //Generate Initial Grid
 let size = 16 * 16;
@@ -24,29 +35,33 @@ cellDiv.style.height = `${cellH - 2}px`;
 
 for (i = 0; i < size; i++){
     cellDivCopy = cellDiv.cloneNode(true);
+    cellDivCopy.addEventListener('mouseenter', (e) => {
+        console.log(e.target);
+        e.target.style.backgroundColor = 'purple';
+    });    
     skContainer.appendChild(cellDivCopy);
 }
 
-//console.log(cellDiv.style.width);
-console.log(skContainer.children);
 
+//function for generating new grids
 function genGrid(n){
     removeAllChildren(skContainer);
     size = n * n;
     let cellW2 = Math.sqrt(totalArea/size);
     let cellH2 = Math.sqrt(totalArea/size);
 
-    //console.log(cellW2);
-
     cellDiv.style.width = `${cellW2 - 2}px`;
     cellDiv.style.height = `${cellH2 - 2}px`;
 
-    //console.log(cellDiv.style.width);
-
     for (i = 0; i < size; i++){
-        let cellDivCopy2 = cellDiv.cloneNode(true);
-        skContainer.appendChild(cellDivCopy2);
+        cellDivCopy = cellDiv.cloneNode(true);
+        cellDivCopy.addEventListener('mouseenter', (e) => {
+            console.log(e.target);
+            e.target.style.backgroundColor = 'purple';
+        });    
+        skContainer.appendChild(cellDivCopy);
     }
+
 }
 
 //Trying to recreate removeAllChildren function with for loop
@@ -56,8 +71,8 @@ function clearGrid() {
     }
 }
 
+//used in clear (reset) button
 function removeAllChildren(parent){
-    
     while (parent.firstChild){
         parent.removeChild(parent.firstChild);
     }

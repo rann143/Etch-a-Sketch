@@ -3,13 +3,17 @@ body{
     padding: 5px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.cellColor1{
+    background-color: aqua;
 }
 
 .cellDivClass{
-    width: ;
-    height: ;
-    border: 1px solid;
-    border-color: rgb(0, 0, 0);
+    
 }
 
 #sketch-grid-container{
