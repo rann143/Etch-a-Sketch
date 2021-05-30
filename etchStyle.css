@@ -8,6 +8,16 @@ body{
 
 }
 
+h1{
+    font-size: 50px;
+    margin: 10px;
+}
+
+h2{
+    color:rgb(219, 144, 144);
+    margin: 10px;
+}
+
 .cellColor1{
     background-color: aqua;
 }

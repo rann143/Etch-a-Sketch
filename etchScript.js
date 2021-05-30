@@ -20,14 +20,13 @@ resizeBtn.addEventListener('click', () => {
 });
 
 //Clear button 
-const resetBtn = document.querySelector('#reset-btn');
-resetBtn.addEventListener('click', resetPad);
+const clearBtn = document.querySelector('#clear-btn');
+clearBtn.addEventListener('click', eraseAll);
 
-function resetPad(){
-    genGrid(16);
+function eraseAll() {
+    let gridCells = skContainer.querySelectorAll('div');
+    gridCells.forEach(gridCell => gridCell.style.backgroundColor = "#FFFFFF");
 }
-
-
 
 
 //Variables for calculating total grid area - used for calculating individual cell size
@@ -41,12 +40,10 @@ let cellW = Math.sqrt(totalArea/size);
 let cellH = Math.sqrt(totalArea/size);
 let cellDivCopy = cellDiv.cloneNode(true);
 
-/*let r = Math.floor(Math.random() * 256);
-let g = Math.floor(Math.random() * 256);
-let b = Math.floor(Math.random() * 256);*/
-
+//Check if mouse is down
 let isDrawing = false;
 
+//Set cell dimensions
 cellDiv.style.width = `${cellW - 2}px`;
 cellDiv.style.height = `${cellH - 2}px`;
 
@@ -80,11 +77,11 @@ function genGrid(n){
 
     cellDiv.style.width = `${cellW2 - 2}px`;
     cellDiv.style.height = `${cellH2 - 2}px`;
-
     
 
     for (i = 0; i < size; i++){
         cellDivCopy = cellDiv.cloneNode(true);
+        
         cellDivCopy.addEventListener('mousedown', (e) => {
             //e.target.style.backgroundColor = 'purple';
             e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
@@ -99,25 +96,29 @@ function genGrid(n){
                 e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
             }
         })
+
+
         skContainer.appendChild(cellDivCopy);
     }
 
 }
 
 function genRandomRgb(max){
-    Math.floor(math.random() * max);
+    Math.floor(Math.random() * max);
 }
 
 
-/*
+
 //Green Button
 const gBtn = document.querySelector('#green-btn');
-gBtn.addEventListener('click');
+gBtn.addEventListener('click', () => {
+
+});
 //Red Button
 
 function drawGreen(e){
     e.target.style.backgroundColor = 'green';
-}*/
+}
 
 //Trying to recreate removeAllChildren function with for loop
 function clearGrid() {
