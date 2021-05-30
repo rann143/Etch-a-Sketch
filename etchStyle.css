@@ -12,8 +12,9 @@ body{
     background-color: aqua;
 }
 
-.cellDivClass{
-    
+#btn-div{
+    display: flex;
+    justify-content: center;
 }
 
 #sketch-grid-container{
